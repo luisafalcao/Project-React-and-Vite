@@ -29,7 +29,7 @@ export default function Home() {
             <div className="cards">
                 <ListaIdiomas conteudo={idiomas} />
                 <Card idioma={false}>
-                    <NovoConteudo label="Idioma">
+                    <NovoConteudo label="Idioma" margin="auto">
                         <Form
                             setDatabaseId={setIdiomaId}
                             database={database}

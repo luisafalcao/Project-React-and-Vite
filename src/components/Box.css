@@ -16,6 +16,7 @@
 .box-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .classe-gramatical,
@@ -24,7 +25,8 @@
   padding: 1rem;
 }
 
-.box-header > h3 {
+.box-header > h3,
+.box-header > p {
   margin: 0;
 }
 

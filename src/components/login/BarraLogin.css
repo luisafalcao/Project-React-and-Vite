@@ -16,7 +16,7 @@
   justify-content: flex-start;
 }
 
-.logout > p > span {
+.logout > p {
   font-weight: var(--font-weight-bold);
   color: var(--accent-color);
 }

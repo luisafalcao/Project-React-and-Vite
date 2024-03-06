@@ -26,13 +26,24 @@ export default function Form({ campos, textoBotao, database, document, textoSuce
             <form onSubmit={handleSubmit(enviarDados)}>
                 {
                     campos.map((campo, index) => {
-                        const { name, type, maxLength, required, label } = campo
+                        const { name, type, maxLength, required, label, options } = campo
 
                         if (type === "textarea") {
                             return (
                                 <div key={index} className="form-group">
                                     <label htmlFor={name}>{label}</label>
                                     <textarea cols="30" rows="10" {...register(name, { required: required, maxLength: maxLength })}></textarea>
+                                </div>
+                            )
+                        } else if (type === "select") {
+                            return (
+                                <div key={index} className="form-group">
+                                    <label htmlFor={name}>{label}</label>
+                                    <select {...register(name, { required: required, maxLength: maxLength })}>
+                                        {options.map((option, index) => (
+                                            <option key={index} value={option}>{option}</option>
+                                        ))}
+                                    </select>
                                 </div>
                             )
                         } else {

@@ -2,13 +2,13 @@
 
 export default function ListaVocabulario({ conteudo }) {
     return (
-        <div className="lista">
+        <div className="coluna">
             {conteudo.map((item, index) => {
-                const { portugues, traducao } = item
+                const { palavraPt, palavraId, genero, classeGramatical } = item
                 return (
-                    <div key={index}>
-                        <h4 key={index}>{portugues} = {traducao}</h4>
-                        <hr />
+                    <div key={index} className="box box-header">
+                        <h3 key={index}>{palavraId} <span className="palavra-pt">= {palavraPt}</span></h3>
+                        <p>{classeGramatical} | {genero}</p>
                     </div>
                 )
             })}
