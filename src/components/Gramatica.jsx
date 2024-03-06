@@ -36,8 +36,10 @@ export default function Gramatica() {
                     </NovoConteudo>
                 </div>
                 <div className="coluna">
-                    <Card>
-                        <h3>Pronomes</h3>
+                    <Card
+                        titulo="Pronomes"
+                        ordemInvertida={true}
+                    >
                         <ul>
                             <li>Eu</li>
                             <li>Tu</li>
@@ -51,7 +53,14 @@ export default function Gramatica() {
                                 database="pronomes"
                                 campos={[
                                     {
-                                        name: "pronome",
+                                        name: "pronomePt",
+                                        type: "text",
+                                        maxLength: 10,
+                                        required: true,
+                                        label: "Pronome (PT)"
+                                    },
+                                    {
+                                        name: "pronomeId",
                                         type: "text",
                                         maxLength: 10,
                                         required: true,

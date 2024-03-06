@@ -1,45 +1,56 @@
+// import { useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import ListaVocabulario from "../components/ListaVocabulario"
+import { listarItens } from "../infra/basededados"
+import "./Vocabulario.css"
+import ListaVocabulario from "../components/listas/ListaVocabulario"
 import NovoConteudo from "../components/NovoConteudo"
 import Form from "../components/Form"
 
 export default function Vocabulario() {
     let { id } = useParams();
 
-    const palavras = [{
-        portugues: "Gato",
-        traducao: "Chat",
-        categorias: ["animais", "outra"]
-    }, {
-        portugues: "Queijo",
-        traducao: "Fromage",
-        categorias: ["comidas"]
-    }]
+    const document = "vocabulario";
+
+    const [vocabulario, setVocabulario] = useState([]);
+    const [vocabularioId, setVocabularioId] = useState("");
+
+    useEffect(() => {
+        async function fetchData() {
+            const data = await listarItens("paratestes"); //o certo é usar a const id
+            setVocabulario(data);
+        }
+
+        fetchData();
+    }, [vocabularioId])
 
     return (
         <main>
             <div className="container-flex half">
-                <ListaVocabulario conteudo={palavras} />
+                <ListaVocabulario conteudo={vocabulario} />
                 <NovoConteudo>
                     <Form
-                        database="vocabulario"
+                        setDatabaseId={setVocabularioId}
+                        database={id}
+                        document={document}
                         campos={[
                             {
-                                name: "palavraTraducao",
+                                name: "palavraPt",
+                                type: "text",
+                                maxLength: 50,
+                                required: true,
+                                label: "Palavra (PT)"
+                            },
+                            {
+                                name: "palavraId",
                                 type: "text",
                                 maxLength: 50,
                                 required: true,
                                 label: "Palavra"
                             },
-                            {
-                                name: "palavraPortugues",
-                                type: "text",
-                                maxLength: 50,
-                                required: true,
-                                label: "Palavra em Português"
-                            },
                         ]}
                         textoBotao="Adicionar"
+                        textoSucesso="Vocabulário atualizado com sucesso!"
                     />
                 </NovoConteudo>
             </div>

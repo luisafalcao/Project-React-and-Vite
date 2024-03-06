@@ -1,30 +1,41 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Card from "../components/Card";
 import NovoConteudo from "../components/NovoConteudo";
 import Form from "../components/Form";
+import ListaIdiomas from "../components/listas/ListaIdiomas";
+import { listarItens } from "../infra/basededados";
 
 export default function Home() {
+    const database = "idiomas"
+    // let { id } = useParams();
+
+    const [idiomas, setIdiomas] = useState([]);
+    const [idiomaId, setIdiomaId] = useState("");
+
+    useEffect(() => {
+        async function fetchData() {
+            const data = await listarItens(database);
+            setIdiomas(data);
+        }
+
+        fetchData();
+    }, [idiomaId]);
+
     let navigate = useNavigate();
 
     function handleClick(event) {
-        navigate(`/idioma/${event.target.id}/gramatica`)
+        navigate(`/idioma/${event.target.id.toLowerCase()}/gramatica`)
     }
-
-    const idiomas = ["Italiano", "Espanhol", "Coreano"];
 
     return (
         <main>
             <h2 className="center">meus idiomas</h2>
             <div>
-                <div className="cards">
-                    {
-                        idiomas.map((idioma, index) => (
-                            <Card key={index} titulo={idioma} handleClick={handleClick} tipo="botao" />
-                        ))
-                    }
-                </div>
+                <ListaIdiomas conteudo={idiomas} handleClick={handleClick} />
                 <NovoConteudo label="Idioma">
                     <Form
+                        setDatabaseId={setIdiomaId}
+                        database={database}
                         campos={[
                             {
                                 name: "idioma",

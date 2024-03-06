@@ -1,35 +1,65 @@
+import DataTable from "react-data-table-component";
 import "./Tabela.css";
 
-export default function Tabela() {
+export default function Tabela({ conteudo }) {
+    const customStyles = {
+        table: {
+            style: {
+                backgroundColor: "transparent"
+            }
+        },
+        rows: {
+            style: {
+                fontSize: "1.2rem",
+                fontWeight: "600",
+                color: "#002ec9",
+                backgroundColor: "transparent",
+            }
+        },
+        headCells: {
+            style: {
+                paddingLeft: '8px', // override the cell padding for head cells
+                paddingRight: '8px',
+            },
+        },
+        headRow: {
+            style: {
+                backgroundColor: "transparent",
+            }
+        }
+
+    };
+
+    const colunas = [
+        {
+            name: "Português",
+            selector: row => row.palavraPt,
+            sortable: true,
+        },
+        {
+            name: "Traducao",
+            selector: row => row.palavraId,
+            sortable: true,
+        },
+    ]
+
+    function handleRowSelect(selectedRows) {
+        console.log(selectedRows[0]?.id)
+    }
+
     return (
-        <table>
-            <caption>Tempo Verbal</caption>
-            <tbody>
-                <tr>
-                    <td className="pronome">Eu</td>
-                    <td>Conjugação</td>
-                </tr>
-                <tr>
-                    <td className="pronome">Tu</td>
-                    <td>Conjugação</td>
-                </tr>
-                <tr>
-                    <td className="pronome">Ele</td>
-                    <td>Conjugação</td>
-                </tr>
-                <tr>
-                    <td className="pronome">Nós</td>
-                    <td>Conjugação</td>
-                </tr>
-                <tr>
-                    <td className="pronome">Vós</td>
-                    <td>Conjugação</td>
-                </tr>
-                <tr>
-                    <td className="pronome">Eles</td>
-                    <td>Conjugação</td>
-                </tr>
-            </tbody>
-        </table>
+        <div>
+            <DataTable
+                columns={colunas}
+                data={conteudo}
+                responsive
+                dense
+                customStyles={customStyles}
+                selectableRows
+                selectableRowsHighlight
+                selectableRowsSingle
+                onSelectedRowsChange={handleRowSelect}
+            />
+        </div>
     )
 }
