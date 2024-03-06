@@ -1,0 +1,48 @@
+.box {
+  border-top: 2px solid var(--text-color);
+  border-bottom: 2px solid var(--text-color);
+  height: fit-content;
+  overflow-x: clip;
+}
+
+.verbos .box {
+  flex-basis: 400px;
+}
+
+.box.transparente {
+  border: transparent;
+}
+
+.box-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.classe-gramatical,
+.box-header {
+  width: 100%;
+  padding: 1rem;
+}
+
+.box-header > h3 {
+  margin: 0;
+}
+
+.box-header > h3:nth-child(2) {
+  margin-left: auto;
+}
+
+.box-header > .idioma {
+  font-style: italic;
+}
+
+.conjugacao {
+  display: flex;
+  gap: 2rem;
+  overflow-x: scroll;
+}
+
+.collapse-icon {
+  margin-left: 1rem;
+  align-self: center;
+}

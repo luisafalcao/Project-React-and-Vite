@@ -1,0 +1,15 @@
+.page-nav li {
+  font-size: 1.5rem;
+}
+
+.page-nav ul {
+  gap: 4rem;
+}
+
+.idioma-id {
+  margin-left: auto;
+}
+
+.bold {
+  font-weight: var(--font-weight-bold);
+}

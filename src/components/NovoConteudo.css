@@ -1,0 +1,19 @@
+.add-conteudo {
+  margin: auto;
+  width: fit-content;
+  max-width: fit-content;
+  min-width: 200px;
+  cursor: pointer;
+}
+
+.add-conteudo > .header {
+  padding: 1rem;
+  border: 2px solid var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  font-weight: var(--font-weight-bold);
+  border-radius: 10px;
+  /* margin-top: 1rem; */
+  margin-bottom: 1rem;
+  text-align: center;
+}
