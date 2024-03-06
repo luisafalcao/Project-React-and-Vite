@@ -20,3 +20,7 @@
   font-weight: var(--font-weight-bold);
   color: var(--accent-color);
 }
+
+.form-group > label {
+  margin-bottom: 10px;
+}

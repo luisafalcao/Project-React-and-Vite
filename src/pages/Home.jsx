@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import NovoConteudo from "../components/NovoConteudo";
 import Form from "../components/Form";
 import ListaIdiomas from "../components/listas/ListaIdiomas";
+import Card from "../components/Card";
 import { listarItens } from "../infra/basededados";
 
 export default function Home() {
@@ -21,33 +21,32 @@ export default function Home() {
         fetchData();
     }, [idiomaId]);
 
-    let navigate = useNavigate();
 
-    function handleClick(event) {
-        navigate(`/idioma/${event.target.id.toLowerCase()}/gramatica`)
-    }
 
     return (
         <main>
             <h2 className="center">meus idiomas</h2>
-            <div>
-                <ListaIdiomas conteudo={idiomas} handleClick={handleClick} />
-                <NovoConteudo label="Idioma">
-                    <Form
-                        setDatabaseId={setIdiomaId}
-                        database={database}
-                        campos={[
-                            {
-                                name: "idioma",
-                                type: "text",
-                                maxLength: 20,
-                                required: true
-                            }
-                        ]}
-                        textoBotao="Adicionar"
-                        textoSucesso="Idioma adicionado com sucesso!"
-                    />
-                </NovoConteudo>
+            <div className="cards">
+                <ListaIdiomas conteudo={idiomas} />
+                <Card idioma={false}>
+                    <NovoConteudo label="Idioma">
+                        <Form
+                            setDatabaseId={setIdiomaId}
+                            database={database}
+                            campos={[
+                                {
+                                    name: "idioma",
+                                    type: "text",
+                                    maxLength: 20,
+                                    required: true
+                                }
+                            ]}
+                            textoBotao="Adicionar"
+                            textoSucesso="Idioma adicionado com sucesso!"
+                        />
+                    </NovoConteudo>
+                </Card>
+
             </div>
         </main>
 

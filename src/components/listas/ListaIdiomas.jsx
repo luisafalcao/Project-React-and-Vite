@@ -1,15 +1,18 @@
 /* eslint-disable react/prop-types */
+import { useNavigate } from "react-router-dom";
 import "./ListaVocabulario.css"
 import Card from "../Card"
 
-export default function ListaIdiomas({ conteudo, handleClick }) {
+export default function ListaIdiomas({ conteudo }) {
+    let navigate = useNavigate();
+
+    function handleClick(event) {
+        navigate(`/idioma/${event.target.id.toLowerCase()}/gramatica`)
+    }
+
     return (
-        <div className="cards">
-            {
-                conteudo.map((idioma, index) => (
-                    <Card key={index} info={idioma} titulo={idioma.idioma} handleClick={handleClick} tipo="botao" />
-                ))
-            }
-        </div>
+        conteudo.map((idioma, index) => (
+            <Card key={index} idioma={idioma.idioma} titulo={idioma.id} handleClick={handleClick} tipo="botao" />
+        ))
     )
 }

@@ -3,7 +3,7 @@ main {
   height: 100%;
   overflow-y: scroll;
   margin: auto;
-  padding: 5rem;
+  padding: 5rem 3rem;
 }
 
 nav.top-nav {
@@ -44,7 +44,7 @@ label {
 
 .cards {
   width: 100%;
-  justify-content: left;
+  justify-content: center;
   gap: 1rem;
   margin-bottom: 1rem;
 }

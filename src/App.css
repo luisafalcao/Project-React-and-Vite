@@ -11,8 +11,8 @@
   --title-font-family: "JetBrains Mono", monospace;
   --font-family: "Barlow", sans-serif;
   --font-style: normal;
-  --font-weight-light: 100;
-  --font-weight-medium: 400;
+  --font-weight-light: 400;
+  --font-weight-medium: 600;
   --font-weight-bold: 800;
 
   --background-color: #fbf1e1;
@@ -58,6 +58,11 @@ input[type="button"],
 input[type="submit"] {
   cursor: pointer;
   font-family: var(--title-font-family);
+}
+
+input[type="button"]:hover {
+  background-color: var(--text-color);
+  color: var(--background-color);
 }
 
 a {

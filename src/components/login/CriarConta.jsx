@@ -35,16 +35,16 @@ export default function CriarConta({ usuario, setUsuario }) {
             <h2 className="center">Criar Conta</h2>
             <div className="container flex">
                 <form>
-                    <div>
-                        <label htmlFor="email">Email:</label> <br />
+                    <div className="form-group">
+                        <label htmlFor="email">Email:</label>
                         <input type="text" name="email" value={dadosForm.email} onChange={handleChange} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="senha">Senha:</label> <br />
+                        <label htmlFor="senha">Senha:</label>
                         <input type="password" name="senha" value={dadosForm.senha} onChange={handleChange} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="confirma">Confirmar Senha:</label> <br />
+                        <label htmlFor="confirma">Confirmar Senha:</label>
                         <input type="password" name="confirma" value={dadosForm.confirma} onChange={handleChange} />
                     </div>
                     <input type="button" value="Criar Conta" onClick={handleClick} />
