@@ -10,14 +10,14 @@ import Form from "../components/Form"
 export default function Vocabulario() {
     let { id } = useParams();
 
-    const document = "vocabulario";
+    const categoria = "vocabulario";
 
     const [vocabulario, setVocabulario] = useState([]);
     const [vocabularioId, setVocabularioId] = useState("");
 
     useEffect(() => {
         async function fetchData() {
-            const data = await listarItens(document, id);
+            const data = await listarItens(categoria, id);
             setVocabulario(data);
         }
 
@@ -32,8 +32,8 @@ export default function Vocabulario() {
                     <NovoConteudo>
                         <Form
                             setDatabaseId={setVocabularioId}
-                            database={id}
-                            document={document}
+                            idiomaSelecionado={id}
+                            categoria={categoria}
                             campos={[
                                 {
                                     name: "palavraPt",

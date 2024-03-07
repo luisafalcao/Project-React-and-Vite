@@ -1,19 +1,19 @@
 /* eslint-disable react/prop-types */
 import { useForm } from "react-hook-form";
-import { inserirDocumento, inserirSubColecao } from "../infra/basededados";
+import { inserirIdioma, inserirItem } from "../infra/basededados";
 import "./Form.css"
 
-export default function Form({ campos, textoBotao, database, document, textoSucesso, setDatabaseId }) {
+export default function Form({ campos, textoBotao, idiomaSelecionado, categoria, textoSucesso, setDatabaseId }) {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     async function enviarDados(dados) {
-        if (database === "idiomas") {
-            const novoIdioma = dados.idioma.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-            let id = await inserirDocumento(dados, database, novoIdioma);
+        if (categoria === "idiomas") {
+            const idiomaNome = dados.idioma.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            let id = await inserirIdioma(dados, idiomaNome);
             setDatabaseId(id)
         } else {
             const subColecaoNome = dados.palavraId.toLowerCase();
-            await inserirSubColecao(dados, database, document, subColecaoNome)
+            await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome)
         }
 
         alert(textoSucesso)

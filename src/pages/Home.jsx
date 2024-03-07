@@ -3,25 +3,22 @@ import NovoConteudo from "../components/NovoConteudo";
 import Form from "../components/Form";
 import ListaIdiomas from "../components/listas/ListaIdiomas";
 import Card from "../components/Card";
-import { listarItens } from "../infra/basededados";
+import { listarIdiomas } from "../infra/basededados";
 
 export default function Home() {
-    const database = "idiomas"
-    // let { id } = useParams();
+    const categoria = "idiomas"
 
     const [idiomas, setIdiomas] = useState([]);
     const [idiomaId, setIdiomaId] = useState("");
 
     useEffect(() => {
         async function fetchData() {
-            const data = await listarItens(database);
+            const data = await listarIdiomas(categoria);
             setIdiomas(data);
         }
 
         fetchData();
     }, [idiomaId]);
-
-
 
     return (
         <main>
@@ -32,7 +29,7 @@ export default function Home() {
                     <NovoConteudo label="Idioma" margin="auto">
                         <Form
                             setDatabaseId={setIdiomaId}
-                            database={database}
+                            categoria={categoria}
                             campos={[
                                 {
                                     name: "idioma",

@@ -1,24 +1,24 @@
-import { collection, getDocs, setDoc, doc, query, QuerySnapshot } from "firebase/firestore";
+import { collection, getDocs, setDoc, doc } from "firebase/firestore";
 import { db } from "./firebase";
 
-export async function inserirDocumento(novoItem, databaseNome, documentoNome) {
-    const docRef = await setDoc(doc(db, databaseNome, documentoNome), novoItem)
+export async function inserirIdioma(novosDados, idiomaNome) {
+    const docRef = await setDoc(doc(db, "idiomas", idiomaNome), novosDados)
     return docRef
 }
 
-export async function inserirSubColecao(novoItem, documentoNome, document, subColecaoNome,) {
-    const docRef = await setDoc(doc(db, "idiomas", documentoNome, document, subColecaoNome), novoItem) //(db, idiomas > {lingua selecionada} > {tipo (vocabulario, gramatica, verbo)} > {nome do item}), {palavra/regra/verbo adicinado}
+export async function inserirItem(novosDados, idioma, categoria, novoItem,) {
+    const docRef = await setDoc(doc(db, "idiomas", idioma, categoria, novoItem), novosDados) //(db, idiomas > {lingua selecionada} > {tipo (vocabulario, gramatica, verbo)} > {nome do item}), {palavra/regra/verbo adicinado}
     return docRef
 }
 
-// export async function listarItens(databaseNome) {
-//     let retorno;
-//     await getDocs(collection(db, databaseNome))
-//         .then((QuerySnapshot) => {
-//             retorno = QuerySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-//         });
-//     return retorno
-// }
+export async function listarIdiomas(databaseNome) {
+    let retorno;
+    await getDocs(collection(db, databaseNome))
+        .then((QuerySnapshot) => {
+            retorno = QuerySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+        });
+    return retorno
+}
 
 export async function listarItens(databaseNome, id) {
     let retorno;
