@@ -17,33 +17,18 @@ export default function Vocabulario() {
 
     useEffect(() => {
         async function fetchData() {
-            const data = await listarItens("paratestes"); //o certo é usar a const id
+            const data = await listarItens(document, id);
             setVocabulario(data);
         }
 
         fetchData();
     }, [vocabularioId])
 
-    const placeholder = [
-        {
-            palavraPt: "Gato",
-            palavraId: "Chat",
-            genero: "Masculino",
-            classeGramatical: "Substantivo"
-        },
-        {
-            palavraPt: "Cachorro",
-            palavraId: "Chien",
-            genero: "Masculino",
-            classeGramatical: "Substantivo"
-        },
-    ]
-
     return (
         <main>
             <div className="container-flex half">
                 <div className="coluna">
-                    <ListaVocabulario conteudo={placeholder} />
+                    <ListaVocabulario conteudo={vocabulario} />
                     <NovoConteudo>
                         <Form
                             setDatabaseId={setVocabularioId}

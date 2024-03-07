@@ -2,7 +2,6 @@
 import "./Card.css"
 
 export default function Card({ titulo, tipo, idioma, children, handleClick, ordemInvertida }) {
-    console.log(titulo)
     return (
         <div className={`card ${tipo === "form" && "form"} ${ordemInvertida && "invertida"}`}>
             {children}

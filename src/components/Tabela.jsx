@@ -44,7 +44,7 @@ export default function Tabela({ conteudo }) {
     ]
 
     function handleRowSelect(selectedRows) {
-        console.log(selectedRows[0]?.id)
+        // console.log(selectedRows[0]?.id)
     }
 
     return (
