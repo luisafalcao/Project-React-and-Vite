@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useForm } from "react-hook-form";
-import { inserirDocumento } from "../infra/basededados";
+import { inserirDocumento, inserirSubColecao } from "../infra/basededados";
 import "./Form.css"
 
 export default function Form({ campos, textoBotao, database, document, textoSucesso, setDatabaseId }) {
@@ -11,13 +11,12 @@ export default function Form({ campos, textoBotao, database, document, textoSuce
             const novoIdioma = dados.idioma.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
             let id = await inserirDocumento(dados, database, novoIdioma);
             setDatabaseId(id)
+        } else {
+            const subColecaoNome = dados.palavraId.toLowerCase();
+            await inserirSubColecao(dados, database, document, subColecaoNome)
         }
-        // else {
-        //     const subColecaoNome = dados.palavraId.toLowerCase()
-        //     await inserirSubcolecao(dados, database, subColecaoNome)
-        // }
 
-        // alert(textoSucesso)
+        alert(textoSucesso)
         reset();
     }
 
