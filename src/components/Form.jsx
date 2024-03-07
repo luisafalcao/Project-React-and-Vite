@@ -12,7 +12,12 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
             let id = await inserirIdioma(dados, idiomaNome);
             setDatabaseId(id)
         } else {
-            const subColecaoNome = dados.palavraId.toLowerCase();
+            let subColecaoNome
+            if (categoria === "vocabulario") {
+                subColecaoNome = dados.palavraId.toLowerCase();
+            } else if (categoria === "gramatica") {
+                subColecaoNome = dados.regra.toLowerCase();
+            }
             await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome)
         }
 

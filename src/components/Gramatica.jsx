@@ -1,20 +1,39 @@
 /* eslint-disable react/prop-types */
-import Box from "../components/Box"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { listarItens } from "../infra/basededados"
+
 import NovoConteudo from "../components/NovoConteudo"
 import Form from "../components/Form"
-import Card from "../components/Card"
+import ListaGramatica from "./listas/ListaGramatica"
 
 export default function Gramatica() {
+    const { id } = useParams();
+
+    const categoria = "gramatica";
+
+    const [gramatica, setGramatica] = useState([]);
+    const [gramaticaId, setGramaticaId] = useState("");
+
+    useEffect(() => {
+        async function fetchData() {
+            const data = await listarItens(categoria, id);
+            setGramatica(data)
+        }
+
+        fetchData()
+    }, [gramaticaId])
+
     return (
         <main>
             <div className="container grid">
                 <div className="coluna">
-                    <Box titulo={"Regra 1"} categoria="regra" conteudo="Conteúdo"></Box>
-                    <Box titulo={"Alguma regra"} categoria="regra" conteudo="Conteúdo"></Box>
-                    <Box titulo={"Outra regra"} categoria="regra" conteudo="Conteúdo"></Box>
+                    <ListaGramatica conteudo={gramatica} />
                     <NovoConteudo label="Regra">
                         <Form
-                            database="gramatica"
+                            setDatabaseId={setGramaticaId}
+                            idiomaSelecionado={id}
+                            categoria={categoria}
                             campos={[
                                 {
                                     name: "regra",
@@ -32,47 +51,11 @@ export default function Gramatica() {
                                 },
                             ]}
                             textoBotao="Adicionar"
+                            textoSucesso="Regra adicionada com sucesso!"
                         />
                     </NovoConteudo>
                 </div>
-                <div className="coluna">
-                    <Card
-                        titulo="Pronomes"
-                        ordemInvertida={true}
-                    >
-                        <ul>
-                            <li>Eu</li>
-                            <li>Tu</li>
-                            <li>Ele</li>
-                            <li>Nós</li>
-                            <li>Vós</li>
-                            <li>Eles</li>
-                        </ul>
-                        <NovoConteudo label="Pronome">
-                            <Form
-                                database="pronomes"
-                                campos={[
-                                    {
-                                        name: "pronomePt",
-                                        type: "text",
-                                        maxLength: 10,
-                                        required: true,
-                                        label: "Pronome (PT)"
-                                    },
-                                    {
-                                        name: "pronomeId",
-                                        type: "text",
-                                        maxLength: 10,
-                                        required: true,
-                                        label: "Pronome"
-                                    },
-                                ]}
-                                textoBotao="Adicionar"
-                            />
-                        </NovoConteudo>
-                    </Card>
 
-                </div>
             </div>
         </main>
     )

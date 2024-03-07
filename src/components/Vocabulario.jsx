@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { listarItens } from "../infra/basededados"
 import "./Vocabulario.css"
+
 import ListaVocabulario from "../components/listas/ListaVocabulario"
 import NovoConteudo from "../components/NovoConteudo"
 import Form from "../components/Form"
