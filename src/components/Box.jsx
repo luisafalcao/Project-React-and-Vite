@@ -4,7 +4,7 @@ import "./Box.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Tabela from "./Tabela";
 
-export default function Box({ titulo, categoria, conteudo }) {
+export default function Box({ titulo, categoria, children, conteudo }) {
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
 
     return (
@@ -26,7 +26,7 @@ export default function Box({ titulo, categoria, conteudo }) {
             </div>
 
             <div className="box-body" {...getCollapseProps()}>
-                {categoria === "verbos" &&
+                {/* {categoria === "verbos" &&
                     <div className="conjugacao">
                         <Tabela></Tabela>
                         <Tabela></Tabela>
@@ -39,7 +39,8 @@ export default function Box({ titulo, categoria, conteudo }) {
                     <div className="regra-gramatical">
                         {conteudo}
                     </div>
-                }
+                } */}
+                {children}
             </div>
 
         </div>

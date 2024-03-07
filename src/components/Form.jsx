@@ -17,6 +17,8 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
                 subColecaoNome = dados.palavraId.toLowerCase();
             } else if (categoria === "gramatica") {
                 subColecaoNome = dados.regra.toLowerCase();
+            } else if (categoria === "verbos") {
+                subColecaoNome = dados.infinitivoId.toLowerCase();
             }
             await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome)
         }
