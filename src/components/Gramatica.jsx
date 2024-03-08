@@ -25,10 +25,12 @@ export default function Gramatica() {
     }, [gramaticaId])
 
     return (
-        <main>
+        <>
             <div className="container grid">
                 <div className="coluna">
                     <ListaGramatica conteudo={gramatica} />
+                </div>
+                <div className="coluna">
                     <NovoConteudo label="Regra">
                         <Form
                             setDatabaseId={setGramaticaId}
@@ -55,8 +57,7 @@ export default function Gramatica() {
                         />
                     </NovoConteudo>
                 </div>
-
             </div>
-        </main>
+        </>
     )
 }

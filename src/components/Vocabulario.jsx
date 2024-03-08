@@ -26,11 +26,13 @@ export default function Vocabulario() {
     }, [vocabularioId])
 
     return (
-        <main>
-            <div className="container-flex half">
+        <>
+            <div className="container grid">
                 <div className="coluna">
                     <ListaVocabulario conteudo={vocabulario} />
-                    <NovoConteudo>
+                </div>
+                <div className="coluna">
+                    <NovoConteudo label="Palavra">
                         <Form
                             setDatabaseId={setVocabularioId}
                             idiomaSelecionado={id}
@@ -72,6 +74,6 @@ export default function Vocabulario() {
                     </NovoConteudo>
                 </div>
             </div>
-        </main>
+        </>
     )
 }

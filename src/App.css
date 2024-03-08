@@ -49,9 +49,8 @@ hr {
 #root {
   width: 100%;
   min-height: 100vh;
-  /* display: grid;
-  grid-template-rows: auto 1fr;
-  align-items: start; */
+  display: grid;
+  grid-auto-rows: max-content auto;
 }
 
 input[type="button"],
@@ -83,9 +82,20 @@ input {
   padding: 10px;
   border-radius: 10px;
   outline: none;
+  position: relative;
+}
+
+input.full-width {
+  width: 100%;
 }
 
 ul {
   list-style: none;
   padding-left: 0;
+}
+
+label > span {
+  color: var(--accent-color);
+  font-size: 120%;
+  margin-left: 5px;
 }

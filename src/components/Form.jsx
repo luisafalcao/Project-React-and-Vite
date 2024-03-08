@@ -13,13 +13,15 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
             setDatabaseId(id)
         } else {
             let subColecaoNome
+
             if (categoria === "vocabulario") {
                 subColecaoNome = dados.palavraId.toLowerCase();
             } else if (categoria === "gramatica") {
                 subColecaoNome = dados.regra.toLowerCase();
             } else if (categoria === "verbos") {
-                subColecaoNome = dados.infinitivoId.toLowerCase();
+                subColecaoNome = `${dados.infinitivoId}_${dados.grupoInputs?.tempoVerbal}`.toLowerCase()
             }
+
             await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome)
         }
 
@@ -32,7 +34,18 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
             <form onSubmit={handleSubmit(enviarDados)}>
                 {
                     campos.map((campo, index) => {
-                        const { name, type, maxLength, required, label, options } = campo
+                        const { name, type, maxLength, required, label, options, group, groupTitle } = campo
+
+                        if (group === true) {
+                            return (
+                                <div key={index} className="form-group">
+                                    <label htmlFor="grupoInputs"></label>
+                                    <div>
+                                        <input className={`full-width ${required && 'required'}`} type={type} placeholder={label} {...register(`grupoInputs.${name}`, { required: required, maxLength: maxLength })} />
+                                    </div>
+                                </div>
+                            )
+                        }
 
                         if (type === "textarea") {
                             return (
@@ -55,10 +68,13 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
                         } else {
                             return (
                                 <div key={index} className="form-group">
-                                    <label htmlFor={name}>{label}</label>
-                                    <input type={type} {...register(name, { required: required, maxLength: maxLength })} />
-                                </div>)
+                                    <label htmlFor={name}>{label}{required && <span>*</span>}</label>
+                                    <input className={`${required && 'required'}`} type={type} {...register(name, { required: required, maxLength: maxLength })} />
+                                </div>
+                            )
                         }
+
+
 
                     })
                 }

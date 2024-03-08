@@ -1,61 +1,64 @@
 import DataTable from "react-data-table-component";
+import { criarArraydeObjetos } from "../utils/organizarArraysdeConjugacao";
 import "./Tabela.css";
 
 export default function Tabela({ conteudo }) {
+
     const customStyles = {
         table: {
             style: {
-                backgroundColor: "transparent"
+                backgroundColor: "transparent",
+                width: "fit-content",
             }
         },
         rows: {
             style: {
-                fontSize: "1.2rem",
-                fontWeight: "600",
-                color: "#002ec9",
+                fontSize: "1rem",
+                fontWeight: "400",
                 backgroundColor: "transparent",
+                padding: "0 1rem"
             }
         },
         headCells: {
             style: {
-                paddingLeft: '8px', // override the cell padding for head cells
-                paddingRight: '8px',
+                paddingLeft: '2rem', // override the cell padding for head cells
+                paddingRight: '1rem',
+                fontSize: '1rem',
+                color: "#ff4d80"
             },
         },
         headRow: {
             style: {
                 backgroundColor: "transparent",
             }
-        }
+        },
 
     };
 
-    const colunas = [
-        {
-            name: "Português",
-            selector: row => row.palavraPt,
-            sortable: true,
-        },
-        {
-            name: "Traducao",
-            selector: row => row.palavraId,
-            sortable: true,
-        },
-    ]
+
+    const dados = criarArraydeObjetos(conteudo)
+    const tempoVerbal = Object.values(dados.pop())[0]
 
     function handleRowSelect(selectedRows) {
         // console.log(selectedRows[0]?.id)
     }
 
+    const colunas = [
+        {
+            name: tempoVerbal,
+            selector: row => row.conjugacao,
+        },
+    ]
+
     return (
         <div>
             <DataTable
                 columns={colunas}
-                data={conteudo}
+                data={dados}
                 responsive
                 dense
                 customStyles={customStyles}
-                selectableRows
+                // selectableRows
                 selectableRowsHighlight
                 selectableRowsSingle
                 onSelectedRowsChange={handleRowSelect}

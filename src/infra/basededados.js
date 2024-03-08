@@ -8,6 +8,7 @@ export async function inserirIdioma(novosDados, idiomaNome) {
 
 export async function inserirItem(novosDados, idioma, categoria, novoItem,) {
     const docRef = await setDoc(doc(db, "idiomas", idioma, categoria, novoItem), novosDados) //(db, idiomas > {lingua selecionada} > {tipo (vocabulario, gramatica, verbo)} > {nome do item}), {palavra/regra/verbo adicinado}
+    console.log(novosDados.grupoInputs.tempoVerbal)
     return docRef
 }
 

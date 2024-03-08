@@ -26,7 +26,10 @@ export default function Box({ titulo, categoria, children, conteudo }) {
             </div>
 
             <div className="box-body" {...getCollapseProps()}>
-                {/* {categoria === "verbos" &&
+                <div className="wrapper">
+                    {children}
+
+                    {/* {categoria === "verbos" &&
                     <div className="conjugacao">
                         <Tabela></Tabela>
                         <Tabela></Tabela>
@@ -40,7 +43,7 @@ export default function Box({ titulo, categoria, children, conteudo }) {
                         {conteudo}
                     </div>
                 } */}
-                {children}
+                </div>
             </div>
 
         </div>

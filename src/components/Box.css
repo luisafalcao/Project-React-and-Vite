@@ -5,10 +5,6 @@
   overflow-x: clip;
 }
 
-.verbos .box {
-  flex-basis: 400px;
-}
-
 .box.transparente {
   border: transparent;
 }
@@ -17,6 +13,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.box .wrapper {
+  padding: 1rem;
 }
 
 .classe-gramatical,
