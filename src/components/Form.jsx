@@ -1,28 +1,36 @@
 /* eslint-disable react/prop-types */
 import { useForm } from "react-hook-form";
-import { inserirIdioma, inserirItem } from "../infra/basededados";
+import { inserirConjug, inserirIdioma, inserirItem } from "../infra/basededados";
 import "./Form.css"
 
 export default function Form({ campos, textoBotao, idiomaSelecionado, categoria, textoSucesso, setDatabaseId }) {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     async function enviarDados(dados) {
+
         if (categoria === "idiomas") {
             const idiomaNome = dados.idioma.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
             let id = await inserirIdioma(dados, idiomaNome);
+
             setDatabaseId(id)
         } else {
             let subColecaoNome
+            let tempoVerbal
+            let conjugacoes
 
             if (categoria === "vocabulario") {
                 subColecaoNome = dados.palavraId.toLowerCase();
             } else if (categoria === "gramatica") {
                 subColecaoNome = dados.regra.toLowerCase();
             } else if (categoria === "verbos") {
-                subColecaoNome = `${dados.infinitivoId}_${dados.grupoInputs?.tempoVerbal}`.toLowerCase()
+                const { grupoInputs, ...infinitivos } = dados;
+                subColecaoNome = infinitivos.infinitivoId.toLowerCase() //faire
+                tempoVerbal = grupoInputs.tempoVerbal.toLowerCase() //presente
+                conjugacoes = dados.grupoInputs
+                dados = { "infinitivoId": infinitivos.infinitivoId, "infinitivoPt": infinitivos.infinitivoPt }
             }
 
-            await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome)
+            await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome, tempoVerbal, conjugacoes)
         }
 
         alert(textoSucesso)
