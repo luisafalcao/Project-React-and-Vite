@@ -4,6 +4,7 @@ import "./Tabela.css";
 
 export default function Tabela({ conteudo }) {
 
+    console.log(conteudo)
     const customStyles = {
         table: {
             style: {

@@ -5,10 +5,11 @@ import Tabela from "../Tabela";
 export default function ListaVerbos({ conteudo }) {
 
     return (conteudo.map((verbo, index) => {
-        const { infinitivoId, grupoInputs } = verbo;
+        const { infinitivoId } = verbo;
+        console.log(verbo)
         return (
             <Box key={index} titulo={infinitivoId} categoria="verbos">
-                <Tabela conteudo={grupoInputs} />
+                <Tabela conteudo={verbo} />
             </Box>
         )
     }))

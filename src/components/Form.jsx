@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useForm } from "react-hook-form";
-import { inserirConjug, inserirIdioma, inserirItem } from "../infra/basededados";
+import { inserirIdioma, inserirItem } from "../infra/basededados";
 import "./Form.css"
 
 export default function Form({ campos, textoBotao, idiomaSelecionado, categoria, textoSucesso, setDatabaseId }) {
