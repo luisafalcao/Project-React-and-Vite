@@ -7,7 +7,7 @@ export default function ListaGramatica({ conteudo }) {
             {conteudo.map((item, index) => {
                 const { regra, conteudo } = item
                 return (
-                    <Box key={index} titulo={regra} categoria="regra">
+                    <Box key={index} titulo={[regra]} categoria="regra">
                         {conteudo}
                     </Box>
                 )

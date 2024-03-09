@@ -9,3 +9,8 @@
   display: flex;
   flex-direction: column;
 }
+
+.form > form:has(.form-group.flex) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

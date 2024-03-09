@@ -43,14 +43,14 @@ export default function Vocabulario() {
                                     type: "text",
                                     maxLength: 50,
                                     required: true,
-                                    label: "Palavra (PT)"
+                                    label: "Palavra (Português)"
                                 },
                                 {
                                     name: "palavraId",
                                     type: "text",
                                     maxLength: 50,
                                     required: true,
-                                    label: "Palavra"
+                                    label: "Palavra (Idioma)"
                                 },
                                 {
                                     name: "genero",
@@ -64,7 +64,7 @@ export default function Vocabulario() {
                                     name: "classeGramatical",
                                     type: "text",
                                     maxLength: 50,
-                                    required: true,
+                                    required: false,
                                     label: "Classe Gramatical"
                                 },
                             ]}

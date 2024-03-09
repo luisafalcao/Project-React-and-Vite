@@ -13,11 +13,11 @@ export default function Box({ titulo, categoria, children, conteudo }) {
             <div className="box-header" {...getToggleProps()}>
                 {categoria === "verbos" ?
                     <>
-                        <h3 className="idioma">{titulo}</h3>
-                        <h3>{titulo}</h3>
+                        <h3 className="idioma">{titulo[0]}</h3>
+                        <h3>{titulo[1]}</h3>
                     </>
                     :
-                    <h3>{titulo}</h3>
+                    <h3>{titulo[0]}</h3>
                 }
                 {isExpanded ?
                     <FontAwesomeIcon className="collapse-icon" icon="fa-solid fa-chevron-up" /> :

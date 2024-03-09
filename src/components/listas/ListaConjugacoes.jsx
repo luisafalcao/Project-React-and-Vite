@@ -4,7 +4,6 @@ export default function ListaConjugacoes({ conteudo }) {
         <>
             <Tabela conteudo={conteudo}></Tabela>
             <Tabela conteudo={conteudo}></Tabela>
-            <Tabela conteudo={conteudo}></Tabela>
         </>
     )
 }

@@ -41,14 +41,14 @@ export default function Verbos() {
                                     type: "text",
                                     maxLength: 100,
                                     required: true,
-                                    label: "Infinitivo (PT)"
+                                    label: "Infinitivo (Português)"
                                 },
                                 {
                                     name: "infinitivoId",
                                     type: "text",
                                     maxLength: 100,
                                     required: true,
-                                    label: "Infinitivo"
+                                    label: "Infinitivo (Idioma)"
                                 },
                             ]}
                             textoBotao="Adicionar"

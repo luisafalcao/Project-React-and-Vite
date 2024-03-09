@@ -66,7 +66,7 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
                             )
                         } else if (noLabel) {
                             return (
-                                <div key={index} className="form-group">
+                                <div key={index} className="form-group flex">
                                     <input placeholder={label} className={`${required && 'required'}`} type={type} {...register(name, { required: required, maxLength: maxLength })} />
                                 </div>
                             )

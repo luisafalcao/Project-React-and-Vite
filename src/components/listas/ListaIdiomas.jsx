@@ -12,7 +12,7 @@ export default function ListaIdiomas({ conteudo }) {
 
     return (
         conteudo.map((idioma, index) => (
-            <Card key={index} idioma={idioma.idioma} titulo={idioma.id} handleClick={handleClick} tipo="botao" />
+            <Card key={index} idioma={idioma.idioma} titulo={[idioma.id]} handleClick={handleClick} tipo="botao" />
         ))
     )
 }

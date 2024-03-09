@@ -32,8 +32,8 @@ export default function CriarConta({ usuario, setUsuario }) {
 
     return (
         <main className="criar-conta">
-            <h2 className="center">Criar Conta</h2>
             <div className="container flex">
+                <h2 className="center">Criar Conta</h2>
                 <form>
                     <div className="form-group">
                         <label htmlFor="email">Email:</label>

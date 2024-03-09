@@ -2,6 +2,7 @@
   margin: 0;
   min-width: 200px;
   cursor: pointer;
+  flex-grow: 2;
 }
 
 .add-conteudo.margin-auto {
