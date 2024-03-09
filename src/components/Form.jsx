@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { inserirIdioma, inserirItem } from "../infra/basededados";
 import "./Form.css"
 
-export default function Form({ campos, textoBotao, idiomaSelecionado, categoria, textoSucesso, setDatabaseId }) {
+export default function Form({ campos, textoBotao, idiomaSelecionado, categoria, textoSucesso, setDatabaseId, subCategoria }) {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     async function enviarDados(dados) {
@@ -15,22 +15,24 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
             setDatabaseId(id)
         } else {
             let subColecaoNome
-            let tempoVerbal
-            let conjugacoes
+            let tempo
+            let conjGrupo
 
             if (categoria === "vocabulario") {
                 subColecaoNome = dados.palavraId.toLowerCase();
             } else if (categoria === "gramatica") {
                 subColecaoNome = dados.regra.toLowerCase();
             } else if (categoria === "verbos") {
-                const { grupoInputs, ...infinitivos } = dados;
-                subColecaoNome = infinitivos.infinitivoId.toLowerCase() //faire
-                tempoVerbal = grupoInputs.tempoVerbal.toLowerCase() //presente
-                conjugacoes = dados.grupoInputs
-                dados = { "infinitivoId": infinitivos.infinitivoId, "infinitivoPt": infinitivos.infinitivoPt }
+                if (subCategoria) {
+                    subColecaoNome = subCategoria.toLowerCase()
+                    const { tempoVerbal, ...conjugacoes } = dados
+                    tempo = tempoVerbal.toLowerCase()
+                    conjGrupo = conjugacoes
+                } else {
+                    subColecaoNome = dados.infinitivoId.toLowerCase() //faire
+                }
             }
-
-            await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome, tempoVerbal, conjugacoes)
+            await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome, tempo, conjGrupo)
         }
 
         alert(textoSucesso)
@@ -42,8 +44,8 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
             <form onSubmit={handleSubmit(enviarDados)}>
                 {
                     campos.map((campo, index) => {
-                        const { name, type, maxLength, required, label, options, group, groupTitle } = campo
-
+                        const { name, type, maxLength, required, label, options } = campo
+                        {/* 
                         if (group === true) {
                             return (
                                 <div key={index} className="form-group">
@@ -53,7 +55,7 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
                                     </div>
                                 </div>
                             )
-                        }
+                        } */}
 
                         if (type === "textarea") {
                             return (

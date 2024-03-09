@@ -27,7 +27,7 @@ export default function Verbos() {
         <>
             <div className="container grid">
                 <div className="coluna">
-                    <ListaVerbos conteudo={verbos} />
+                    <ListaVerbos conteudo={verbos} categoria={categoria} />
                 </div>
                 <div className="coluna">
                     <NovoConteudo label="Verbo">
@@ -50,64 +50,6 @@ export default function Verbos() {
                                     required: true,
                                     label: "Infinitivo"
                                 },
-                                {
-                                    name: "tempoVerbal",
-                                    type: "text",
-                                    maxLength: 100,
-                                    required: false,
-                                    label: "Tempo Verbal",
-                                    group: true,
-                                    groupTitle: true,
-                                },
-                                {
-                                    name: "pessoaVerbal1",
-                                    type: "text",
-                                    maxLength: 100,
-                                    required: false,
-                                    label: "Primeira Pessoa Singular",
-                                    group: true,
-                                },
-                                {
-                                    name: "pessoaVerbal2",
-                                    type: "text",
-                                    maxLength: 100,
-                                    required: false,
-                                    label: "Segunda Pessoa Singular",
-                                    group: true,
-                                },
-                                {
-                                    name: "pessoaVerbal3",
-                                    type: "text",
-                                    maxLength: 100,
-                                    required: false,
-                                    label: "Terceira Pessoa Singular",
-                                    group: true,
-                                },
-                                {
-                                    name: "pessoaVerbal4",
-                                    type: "text",
-                                    maxLength: 100,
-                                    required: false,
-                                    label: "Primeira Pessoa Plural",
-                                    group: true,
-                                },
-                                {
-                                    name: "pessoaVerbal5",
-                                    type: "text",
-                                    maxLength: 100,
-                                    required: false,
-                                    label: "Segunda Pessoa Plural",
-                                    group: true,
-                                },
-                                {
-                                    name: "pessoaVerbal6",
-                                    type: "text",
-                                    maxLength: 100,
-                                    required: false,
-                                    label: "Terceira Pessoa Plural",
-                                    group: true,
-                                },
-
                             ]}
                             textoBotao="Adicionar"
                             textoSucesso="Verbo adicionado com sucesso!"

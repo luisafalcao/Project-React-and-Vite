@@ -1,15 +1,14 @@
 /* eslint-disable react/prop-types */
 import Box from "../Box"
-import Tabela from "../Tabela";
+import Conjugacoes from "../Conjugacoes";
 
-export default function ListaVerbos({ conteudo }) {
-
+export default function ListaVerbos({ conteudo, categoria }) {
     return (conteudo.map((verbo, index) => {
         const { infinitivoId } = verbo;
-        console.log(verbo)
+
         return (
             <Box key={index} titulo={infinitivoId} categoria="verbos">
-                <Tabela conteudo={verbo} />
+                <Conjugacoes categoria={categoria} verbo={infinitivoId} />
             </Box>
         )
     }))

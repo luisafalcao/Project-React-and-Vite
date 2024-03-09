@@ -6,13 +6,13 @@ export async function inserirIdioma(novosDados, idiomaNome) {
     return docRef
 }
 
-export async function inserirItem(novosDados, idioma, categoria, subColecaoNome, tempoVerbal, conjugacoes) {
-    const docRef = await setDoc(doc(db, "idiomas", idioma, categoria, subColecaoNome), novosDados) //(db, idiomas > {lingua selecionada} > {tipo (vocabulario, gramatica, verbo)} > {nome do item}), {palavra/regra/verbo adicinado}
-
-    if (tempoVerbal) {
-        const grupoRef = await setDoc(doc(db, "idiomas", idioma, categoria, subColecaoNome, tempoVerbal, "conjugacoes"), conjugacoes)
+export async function inserirItem(novosDados, idioma, categoria, subColecaoNome, tempo, conjGrupo) {
+    if (tempo) {
+        const grupoRef = await setDoc(doc(db, "idiomas", idioma, categoria, subColecaoNome, tempo, "conjugacoes"), conjGrupo)
         return grupoRef
     }
+
+    const docRef = await setDoc(doc(db, "idiomas", idioma, categoria, subColecaoNome), novosDados) //(db, idiomas > {lingua selecionada} > {tipo (vocabulario, gramatica, verbo)} > {nome do item}), {palavra/regra/verbo adicinado}
     return docRef
 }
 
