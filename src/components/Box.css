@@ -17,6 +17,10 @@
 
 .box .wrapper {
   padding: 1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .classe-gramatical,

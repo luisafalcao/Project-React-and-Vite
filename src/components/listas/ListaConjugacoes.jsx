@@ -1,5 +1,10 @@
-export default function ListaConjugacoes({ verbo }) {
+import Tabela from "../Tabela"
+export default function ListaConjugacoes({ conteudo }) {
     return (
-        <p>{verbo}</p>
+        <>
+            <Tabela conteudo={conteudo}></Tabela>
+            <Tabela conteudo={conteudo}></Tabela>
+            <Tabela conteudo={conteudo}></Tabela>
+        </>
     )
 }

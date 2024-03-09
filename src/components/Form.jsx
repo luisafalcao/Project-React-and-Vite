@@ -44,18 +44,7 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
             <form onSubmit={handleSubmit(enviarDados)}>
                 {
                     campos.map((campo, index) => {
-                        const { name, type, maxLength, required, label, options } = campo
-                        {/* 
-                        if (group === true) {
-                            return (
-                                <div key={index} className="form-group">
-                                    <label htmlFor="grupoInputs"></label>
-                                    <div>
-                                        <input className={`full-width ${required && 'required'}`} type={type} placeholder={label} {...register(`grupoInputs.${name}`, { required: required, maxLength: maxLength })} />
-                                    </div>
-                                </div>
-                            )
-                        } */}
+                        const { name, type, maxLength, required, label, options, noLabel } = campo
 
                         if (type === "textarea") {
                             return (
@@ -73,6 +62,12 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
                                             <option key={index} value={option}>{option}</option>
                                         ))}
                                     </select>
+                                </div>
+                            )
+                        } else if (noLabel) {
+                            return (
+                                <div key={index} className="form-group">
+                                    <input placeholder={label} className={`${required && 'required'}`} type={type} {...register(name, { required: required, maxLength: maxLength })} />
                                 </div>
                             )
                         } else {

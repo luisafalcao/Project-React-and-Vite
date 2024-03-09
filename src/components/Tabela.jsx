@@ -1,5 +1,5 @@
 import DataTable from "react-data-table-component";
-import { criarArraydeObjetos } from "../utils/organizarArraysdeConjugacao";
+// import { criarArraydeObjetos } from "../utils/organizarArraysdeConjugacao";
 import "./Tabela.css";
 
 export default function Tabela({ conteudo }) {
@@ -22,7 +22,7 @@ export default function Tabela({ conteudo }) {
         },
         headCells: {
             style: {
-                paddingLeft: '2rem', // override the cell padding for head cells
+                paddingLeft: '2rem',
                 paddingRight: '1rem',
                 fontSize: '1rem',
                 color: "#ff4d80"
@@ -36,9 +36,9 @@ export default function Tabela({ conteudo }) {
 
     };
 
-
-    const dados = criarArraydeObjetos(conteudo)
-    const tempoVerbal = Object.values(dados.pop())[0]
+    // criado pra tentar implementar mais tarde pegando as conjugaçoes dinamicamente do banco de dados:
+    // const dados = criarArraydeObjetos(conteudo)
+    // const tempoVerbal = Object.values(dados.pop())[0]
 
     function handleRowSelect(selectedRows) {
         // console.log(selectedRows[0]?.id)
@@ -46,7 +46,7 @@ export default function Tabela({ conteudo }) {
 
     const colunas = [
         {
-            name: tempoVerbal,
+            name: "Tempo Verbal",
             selector: row => row.conjugacao,
         },
     ]
@@ -55,7 +55,7 @@ export default function Tabela({ conteudo }) {
         <div>
             <DataTable
                 columns={colunas}
-                data={dados}
+                data={conteudo}
                 responsive
                 dense
                 customStyles={customStyles}

@@ -19,10 +19,30 @@ export default function Conjugacoes({ categoria, verbo }) {
 
     //     fetchData()
     // }, [conjugacaoId])
+    const conteudoTemporario = [
+        {
+            "conjugacao": "Je fait"
+        },
+        {
+            "conjugacao": "Tu fais"
+        },
+        {
+            "conjugacao": "Il fait"
+        },
+        {
+            "conjugacao": "Nous faisons"
+        },
+        {
+            "conjugacao": "Vous faites"
+        },
+        {
+            "conjugacao": "Ils font"
+        },
+    ]
 
     return (
-        <div>
-            <ListaConjugacoes conteudo={verbo} />
+        <>
+            <ListaConjugacoes conteudo={conteudoTemporario} />
             <NovoConteudo label="Conjugação">
                 <Form
                     // setDatabaseId={setConjugacaoId}
@@ -35,6 +55,7 @@ export default function Conjugacoes({ categoria, verbo }) {
                         maxLength: 100,
                         required: false,
                         label: "Tempo Verbal",
+                        noLabel: true,
                     },
                     {
                         name: "pessoaVerbal1",
@@ -42,6 +63,7 @@ export default function Conjugacoes({ categoria, verbo }) {
                         maxLength: 100,
                         required: false,
                         label: "Primeira Pessoa Singular",
+                        noLabel: true,
                     },
                     {
                         name: "pessoaVerbal2",
@@ -49,6 +71,7 @@ export default function Conjugacoes({ categoria, verbo }) {
                         maxLength: 100,
                         required: false,
                         label: "Segunda Pessoa Singular",
+                        noLabel: true,
                     },
                     {
                         name: "pessoaVerbal3",
@@ -56,6 +79,7 @@ export default function Conjugacoes({ categoria, verbo }) {
                         maxLength: 100,
                         required: false,
                         label: "Terceira Pessoa Singular",
+                        noLabel: true,
                     },
                     {
                         name: "pessoaVerbal4",
@@ -63,6 +87,7 @@ export default function Conjugacoes({ categoria, verbo }) {
                         maxLength: 100,
                         required: false,
                         label: "Primeira Pessoa Plural",
+                        noLabel: true,
                     },
                     {
                         name: "pessoaVerbal5",
@@ -70,6 +95,7 @@ export default function Conjugacoes({ categoria, verbo }) {
                         maxLength: 100,
                         required: false,
                         label: "Segunda Pessoa Plural",
+                        noLabel: true,
                     },
                     {
                         name: "pessoaVerbal6",
@@ -77,12 +103,13 @@ export default function Conjugacoes({ categoria, verbo }) {
                         maxLength: 100,
                         required: false,
                         label: "Terceira Pessoa Plural",
+                        noLabel: true,
                     }]}
                     textoBotao="Adicionar"
                     textoSucesso="Verbo adicionado com sucesso!"
                 />
             </NovoConteudo>
 
-        </div>
+        </>
     )
 }
