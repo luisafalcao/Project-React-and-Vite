@@ -8,7 +8,7 @@ export default function ListaVerbos({ conteudo, categoria }) {
 
         return (
             <Box key={index} titulo={[infinitivoId, infinitivoPt]} categoria="verbos">
-                <Conjugacoes categoria={categoria} verbo={infinitivoId} />
+                {/* <Conjugacoes categoria={categoria} verbo={infinitivoId} /> */}
             </Box>
         )
     }))

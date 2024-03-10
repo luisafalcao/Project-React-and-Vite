@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown, faChevronUp, faHouse } from '@fortawesome/free-solid-svg-icons'
+import Modal from 'react-modal';
 import './App.css'
 import Layout from './pages/Layout';
 import Home from './pages/Home';
@@ -11,6 +12,7 @@ import Verbos from './components/Verbos'
 import Conjugacoes from './components/Conjugacoes';
 
 library.add(faChevronDown, faChevronUp, faHouse)
+Modal.setAppElement('#root');
 
 function App() {
   return (

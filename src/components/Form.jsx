@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
+import Modal from 'react-modal';
 import { useForm } from "react-hook-form";
 import { inserirIdioma, inserirItem } from "../infra/basededados";
 import "./Form.css"
 
-export default function Form({ campos, textoBotao, idiomaSelecionado, categoria, textoSucesso, setDatabaseId, subCategoria }) {
+export default function Form({ campos, textoBotao, idiomaSelecionado, categoria, textoSucesso, setDatabaseId }) {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     async function enviarDados(dados) {
@@ -21,21 +23,60 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
             } else if (categoria === "gramatica") {
                 subColecaoNome = dados.regra.toLowerCase();
             } else if (categoria === "verbos") {
-                subColecaoNome = dados.infinitivoId.toLowerCase() //faire
+                subColecaoNome = dados.infinitivoId.toLowerCase()
             } else if (categoria === "conjugacoes") {
-                subColecaoNome = dados.tempoVerbal.toLowerCase() //faire
+                subColecaoNome = dados.tempoVerbal.toLowerCase()
             }
 
             id = await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome, tempo, conjGrupo)
         }
 
         setDatabaseId(id)
-        alert(textoSucesso)
+        abrirModal()
         reset();
+    }
+
+    const [modalIsOpen, setIsOpen] = useState(false);
+
+    function abrirModal() {
+        setIsOpen(true);
+    }
+
+    function fecharModal() {
+        setIsOpen(false);
     }
 
     return (
         <div className="form">
+
+            <Modal
+                style={{
+                    overlay: {
+                        backgroundColor: 'rgba(0, 0 ,0, 0.8)'
+                    },
+                    content: {
+                        border: 'none',
+                        background: '#ff4d80',
+                        color: "white",
+                        fontSize: "1.5rem",
+                        borderRadius: '20px',
+                        padding: '20px',
+                        height: '30%',
+                        width: '30%',
+                        margin: "auto",
+                        inset: "0",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center"
+                    }
+                }}
+                isOpen={modalIsOpen}
+                onRequestClose={fecharModal}
+                closeTimeoutMS={200}
+            >
+                <div>{textoSucesso}</div>
+            </Modal>
+
             <form onSubmit={handleSubmit(enviarDados)}>
                 {
                     campos.map((campo, index) => {

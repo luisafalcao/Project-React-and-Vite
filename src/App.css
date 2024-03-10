@@ -100,7 +100,15 @@ label > span {
   margin-left: 5px;
 }
 
-/* .rdt_TableCell {
-  border-bottom: 2px solid var(--text-color);
-  border-top: 2px solid var(--text-color);
-} */
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
