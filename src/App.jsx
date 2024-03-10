@@ -8,6 +8,7 @@ import Idioma from './pages/Idioma';
 import Gramatica from './components/Gramatica'
 import Vocabulario from './components/Vocabulario'
 import Verbos from './components/Verbos'
+import Conjugacoes from './components/Conjugacoes';
 
 library.add(faChevronDown, faChevronUp, faHouse)
 
@@ -22,6 +23,7 @@ function App() {
               <Route path="gramatica" element={<Gramatica />} />
               <Route path="vocabulario" element={<Vocabulario />} />
               <Route path="verbos" element={<Verbos />} />
+              <Route path="conjugacoes" element={<Conjugacoes />} />
             </Route>
           </Route>
         </Routes>

@@ -1,15 +1,14 @@
 import DataTable from "react-data-table-component";
-// import { criarArraydeObjetos } from "../utils/organizarArraysdeConjugacao";
+import { criarArraydeObjetos } from "../utils/organizarArraysdeConjugacao";
 import "./Tabela.css";
 
-export default function Tabela({ conteudo }) {
-
-    console.log(conteudo)
+export default function Tabela({ conteudo, tempoVerbal }) {
     const customStyles = {
         table: {
             style: {
                 backgroundColor: "transparent",
                 width: "fit-content",
+                border: "2px solid red"
             }
         },
         rows: {
@@ -17,7 +16,8 @@ export default function Tabela({ conteudo }) {
                 fontSize: "1rem",
                 fontWeight: "400",
                 backgroundColor: "transparent",
-                padding: "0 1rem"
+                padding: "0 2rem",
+                border: "2px solid red"
             }
         },
         headCells: {
@@ -25,28 +25,27 @@ export default function Tabela({ conteudo }) {
                 paddingLeft: '2rem',
                 paddingRight: '1rem',
                 fontSize: '1rem',
-                color: "#ff4d80"
+                color: "#ff4d80",
+                border: "2px solid red"
             },
         },
         headRow: {
             style: {
                 backgroundColor: "transparent",
+                border: "2px solid red"
             }
         },
 
     };
 
     // criado pra tentar implementar mais tarde pegando as conjugaçoes dinamicamente do banco de dados:
-    // const dados = criarArraydeObjetos(conteudo)
-    // const tempoVerbal = Object.values(dados.pop())[0]
-
-    function handleRowSelect(selectedRows) {
-        // console.log(selectedRows[0]?.id)
-    }
+    const dados = criarArraydeObjetos(conteudo)
+    dados.pop()
+    dados.shift()
 
     const colunas = [
         {
-            name: "Tempo Verbal",
+            name: tempoVerbal,
             selector: row => row.conjugacao,
         },
     ]
@@ -55,11 +54,11 @@ export default function Tabela({ conteudo }) {
         <div>
             <DataTable
                 columns={colunas}
-                data={conteudo}
+                data={dados}
                 responsive
                 dense
                 customStyles={customStyles}
-                // selectableRows
+                selectableRows
                 selectableRowsHighlight
                 selectableRowsSingle
                 onSelectedRowsChange={handleRowSelect}

@@ -27,6 +27,7 @@ function organizarAlfabeticamente(array) {
         }
         return 0
     })
+
 }
 
 export { criarArraydeObjetos, organizarAlfabeticamente }

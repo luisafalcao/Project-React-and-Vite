@@ -21,15 +21,11 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
             } else if (categoria === "gramatica") {
                 subColecaoNome = dados.regra.toLowerCase();
             } else if (categoria === "verbos") {
-                if (subCategoria) {
-                    subColecaoNome = subCategoria.toLowerCase()
-                    const { tempoVerbal, ...conjugacoes } = dados
-                    tempo = tempoVerbal.toLowerCase()
-                    conjGrupo = conjugacoes
-                } else {
-                    subColecaoNome = dados.infinitivoId.toLowerCase() //faire
-                }
+                subColecaoNome = dados.infinitivoId.toLowerCase() //faire
+            } else if (categoria === "conjugacoes") {
+                subColecaoNome = dados.tempoVerbal.toLowerCase() //faire
             }
+
             id = await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome, tempo, conjGrupo)
         }
 

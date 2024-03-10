@@ -99,3 +99,8 @@ label > span {
   font-size: 120%;
   margin-left: 5px;
 }
+
+/* .rdt_TableCell {
+  border-bottom: 2px solid var(--text-color);
+  border-top: 2px solid var(--text-color);
+} */
