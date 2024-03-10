@@ -7,12 +7,10 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     async function enviarDados(dados) {
-
+        let id
         if (categoria === "idiomas") {
             const idiomaNome = dados.idioma.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-            let id = await inserirIdioma(dados, idiomaNome);
-
-            setDatabaseId(id)
+            id = await inserirIdioma(dados, idiomaNome);
         } else {
             let subColecaoNome
             let tempo
@@ -32,9 +30,10 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
                     subColecaoNome = dados.infinitivoId.toLowerCase() //faire
                 }
             }
-            await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome, tempo, conjGrupo)
+            id = await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome, tempo, conjGrupo)
         }
 
+        setDatabaseId(id)
         alert(textoSucesso)
         reset();
     }
