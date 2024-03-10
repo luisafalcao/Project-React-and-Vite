@@ -10,7 +10,6 @@ export default function Idioma() {
         <>
             <div className="nav-wrapper">
                 <Navbar idiomaSelecionado={id} />
-
             </div>
 
             <Outlet />

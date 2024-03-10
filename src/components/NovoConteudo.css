@@ -1,8 +1,11 @@
-.add-conteudo {
+.add-conteudo:not() {
   margin: 0;
   min-width: 200px;
   cursor: pointer;
-  flex-grow: 2;
+}
+
+.wrapper .add-conteudo {
+  flex-grow: 1;
 }
 
 .add-conteudo.margin-auto {

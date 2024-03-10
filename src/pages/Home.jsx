@@ -21,7 +21,7 @@ export default function Home() {
     }, [idiomaId]);
 
     return (
-        <>
+        <div className="home-page">
             <div className="cards">
                 <ListaIdiomas conteudo={idiomas} />
                 <Card idioma={false}>
@@ -44,7 +44,7 @@ export default function Home() {
                 </Card>
 
             </div>
-        </>
+        </div>
 
     )
 }

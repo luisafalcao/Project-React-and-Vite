@@ -94,3 +94,11 @@ label {
 h2.center {
   text-align: center;
 }
+
+.home-page {
+  height: 100%;
+  max-width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}

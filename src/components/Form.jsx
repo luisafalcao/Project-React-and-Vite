@@ -73,7 +73,7 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
                         } else {
                             return (
                                 <div key={index} className="form-group">
-                                    <label htmlFor={name}>{label}{required && <span>*</span>}</label>
+                                    <label htmlFor={name}>{label}{required && name != "idioma" && <span>*</span>}</label>
                                     <input className={`${required && 'required'}`} type={type} {...register(name, { required: required, maxLength: maxLength })} />
                                 </div>
                             )
