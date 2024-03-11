@@ -2,12 +2,13 @@
 import Box from "../Box"
 
 export default function ListaGramatica({ conteudo }) {
+
     return (
         <div className="coluna">
             {conteudo.map((item, index) => {
-                const { regra, conteudo } = item
+                const { regra, conteudo, id } = item
                 return (
-                    <Box key={index} titulo={[regra]} categoria="regra">
+                    <Box key={index} titulo={[regra]} categoria="regra" id={id}>
                         {conteudo}
                     </Box>
                 )

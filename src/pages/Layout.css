@@ -122,3 +122,19 @@ h2.center {
   color: var(--accent-color);
   font-weight: var(--font-weight-bold);
 }
+
+.logo {
+  width: 60px;
+}
+
+.card:has(.logo) {
+  background-color: var(--text-color);
+  color: var(--background-color);
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.card:has(.logo) > p {
+  margin-bottom: 0;
+}
