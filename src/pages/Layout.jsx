@@ -10,7 +10,9 @@ export default function Layout() {
         <>
             <nav className="top-nav">
                 <BarraLogin usuario={usuario} setUsuario={setUsuario} />
-                <Link to={"/"}><FontAwesomeIcon className="home-icon" icon="fa-solid fa-house" /></Link>
+                {usuario.id &&
+                    <Link to={"/"}><FontAwesomeIcon className="home-icon" icon="fa-solid fa-house" /></Link>
+                }
             </nav>
 
             <main>

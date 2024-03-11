@@ -14,3 +14,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+small {
+  color: var(--accent-color);
+}

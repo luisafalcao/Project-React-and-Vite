@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useCollapse } from "react-collapsed";
 import "./NovoConteudo.css"
 

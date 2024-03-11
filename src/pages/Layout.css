@@ -39,6 +39,17 @@ nav ul {
   gap: 1rem;
 }
 
+@media (max-width: 500px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  .nav-wrapper {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
 label {
   font-size: 0.8rem;
 }
@@ -101,4 +112,13 @@ h2.center {
   margin: auto;
   display: flex;
   align-items: center;
+}
+
+.no-data-component {
+  margin-bottom: 1rem;
+}
+
+.no-data-component span {
+  color: var(--accent-color);
+  font-weight: var(--font-weight-bold);
 }

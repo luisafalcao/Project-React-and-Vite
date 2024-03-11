@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import "./Card.css"
 
-export default function Card({ titulo, tipo, idioma, children, handleClick, ordemInvertida }) {
+export default function Card({ titulo, tipo, idioma, children, handleClick }) {
     return (
-        <div className={`card ${tipo === "form" && "form"} ${ordemInvertida && "invertida"}`}>
+        <div className={`card ${tipo === "form" && "form"}`}>
             {children}
             {tipo === "botao" &&
                 <button onClick={handleClick} id={titulo} className="card-botao">

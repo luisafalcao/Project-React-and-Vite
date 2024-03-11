@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-
 export default function ListaVocabulario({ conteudo }) {
 
     return (conteudo.map((item, index) => {

@@ -3,6 +3,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown, faChevronUp, faHouse } from '@fortawesome/free-solid-svg-icons'
 import Modal from 'react-modal';
 import './App.css'
+
 import Layout from './pages/Layout';
 import Home from './pages/Home';
 import Idioma from './pages/Idioma';

@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useCollapse } from "react-collapsed";
-import "./Box.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Tabela from "./Tabela";
+import "./Box.css"
 
-export default function Box({ titulo, categoria, children, conteudo }) {
+export default function Box({ titulo, categoria, children }) {
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
 
     return (
@@ -13,8 +12,8 @@ export default function Box({ titulo, categoria, children, conteudo }) {
             <div className="box-header" {...getToggleProps()}>
                 {categoria === "verbos" ?
                     <>
-                        <h3 className="idioma">{titulo[0]}</h3>
-                        <h3>{titulo[1]}</h3>
+                        <h3>{titulo[0]}</h3>
+                        <h3 className="italico">{titulo[1]}</h3>
                     </>
                     :
                     <h3>{titulo[0]}</h3>
@@ -28,21 +27,6 @@ export default function Box({ titulo, categoria, children, conteudo }) {
             <div className="box-body" {...getCollapseProps()}>
                 <div className="wrapper">
                     {children}
-
-                    {/* {categoria === "verbos" &&
-                    <div className="conjugacao">
-                        <Tabela></Tabela>
-                        <Tabela></Tabela>
-                        <Tabela></Tabela>
-                        <Tabela></Tabela>
-                    </div>
-                }
-
-                {categoria === "regra" &&
-                    <div className="regra-gramatical">
-                        {conteudo}
-                    </div>
-                } */}
                 </div>
             </div>
 

@@ -51,6 +51,7 @@ hr {
   min-height: 100vh;
   display: grid;
   grid-auto-rows: max-content auto;
+  padding-bottom: 4rem;
 }
 
 input[type="button"],

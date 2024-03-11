@@ -24,6 +24,10 @@
   gap: 1rem;
 }
 
+.wrapper:has(.rdt_Table) {
+  padding: 0;
+}
+
 .classe-gramatical,
 .box-header {
   width: 100%;
@@ -39,7 +43,7 @@
   margin-left: auto;
 }
 
-.box-header > .idioma {
+.box-header > .italico {
   font-style: italic;
 }
 

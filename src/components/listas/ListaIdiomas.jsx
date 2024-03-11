@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
-import "./ListaVocabulario.css"
 import Card from "../Card"
 
 export default function ListaIdiomas({ conteudo }) {

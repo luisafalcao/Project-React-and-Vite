@@ -15,8 +15,6 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
             id = await inserirIdioma(dados, idiomaNome);
         } else {
             let subColecaoNome
-            let tempo
-            let conjGrupo
 
             if (categoria === "vocabulario") {
                 subColecaoNome = dados.palavraId.toLowerCase();
@@ -28,7 +26,7 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
                 subColecaoNome = dados.tempoVerbal.toLowerCase()
             }
 
-            id = await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome, tempo, conjGrupo)
+            id = await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome)
         }
 
         setDatabaseId(id)
@@ -67,7 +65,8 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
                         inset: "0",
                         display: "flex",
                         justifyContent: "center",
-                        alignItems: "center"
+                        alignItems: "center",
+                        textAlign: "center"
                     }
                 }}
                 isOpen={modalIsOpen}
@@ -111,6 +110,9 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
                                 <div key={index} className="form-group">
                                     <label htmlFor={name}>{label}{required && name != "idioma" && <span>*</span>}</label>
                                     <input className={`${required && 'required'}`} type={type} {...register(name, { required: required, maxLength: maxLength })} />
+                                    {errors[name] && errors[name].type === "required" && (
+                                        <small className="erro">campo obrigatório</small>
+                                    )}
                                 </div>
                             )
                         }
