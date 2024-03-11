@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useCollapse } from "react-collapsed";
-import NovoConteudo from "../components/NovoConteudo";
 import Form from "../components/Form";
 import ListaIdiomas from "../components/listas/ListaIdiomas";
 import Card from "../components/Card";
@@ -41,6 +40,7 @@ export default function Home() {
                         ]}
                         textoBotao="Adicionar"
                         textoSucesso="Idioma adicionado com sucesso!"
+                        classes="inverso"
                     />
                 </Card>
                 <ListaIdiomas conteudo={idiomas} />

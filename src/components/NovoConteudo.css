@@ -10,6 +10,7 @@
 
 .add-conteudo.margin-auto {
   margin: auto;
+  width: max-content;
 }
 
 .add-conteudo > .header {

@@ -10,9 +10,14 @@
   gap: 1rem;
 }
 
-.card:has(:empty) {
-  gap: 0;
+.card.row {
+  flex-direction: row;
+  gap: 3rem;
 }
+
+/* .card:has(:empty) {
+  gap: 0;
+} */
 
 .card-titulo:empty {
   margin: 0;
@@ -32,4 +37,16 @@
   color: var(--background-color);
 
   transition: all 0.5s ease-in-out;
+}
+
+.card.container > .coluna {
+  gap: 1rem;
+}
+
+.card h4 {
+  margin-bottom: 0;
+}
+
+.card ul {
+  margin-top: 0;
 }

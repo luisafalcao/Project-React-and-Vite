@@ -18,3 +18,7 @@
 small {
   color: var(--accent-color);
 }
+
+.form > form.inverso input {
+  color: white;
+}

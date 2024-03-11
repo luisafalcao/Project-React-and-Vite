@@ -24,7 +24,7 @@ export default function Conjugacoes() {
                     />
                 </div>
                 <div className="coluna">
-                    <NovoConteudo label="Conjugação">
+                    <NovoConteudo label="Conjugação" margin="auto">
                         <Form
                             setDatabaseId={conjugStates.setConjugacoesId}
                             idiomaSelecionado={id}
@@ -42,13 +42,6 @@ export default function Conjugacoes() {
                                 maxLength: 100,
                                 required: true,
                                 label: "Verbo (Idioma)",
-                                noLabel: true,
-                            }, {
-                                name: "tempoVerbal",
-                                type: "text",
-                                maxLength: 100,
-                                required: false,
-                                label: "Tempo Verbal",
                                 noLabel: true,
                             },
                             {
@@ -98,7 +91,15 @@ export default function Conjugacoes() {
                                 required: false,
                                 label: "Terceira Pessoa Plural",
                                 noLabel: true,
-                            }]}
+                            },
+                            {
+                                name: "tempoVerbal",
+                                type: "text",
+                                maxLength: 100,
+                                required: false,
+                                label: "Tempo Verbal",
+                                noLabel: true,
+                            },]}
                             textoBotao="Adicionar"
                             textoSucesso="Nova conjugação com sucesso!"
                         />

@@ -11,7 +11,11 @@ export default function ListaIdiomas({ conteudo }) {
 
     return (
         conteudo.map((idioma, index) => (
-            <Card key={index} idioma={idioma.idioma} titulo={[idioma.id]} handleClick={handleClick} tipo="botao" />
+            <Card key={index} idioma={idioma.idioma} tipo="botao" >
+                <button onClick={handleClick} id={idioma.id} className="card-botao">
+                    {idioma.idioma}
+                </button>
+            </Card>
         ))
     )
 }

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { inserirIdioma, inserirItem } from "../infra/basededados";
 import "./Form.css"
 
-export default function Form({ campos, textoBotao, idiomaSelecionado, categoria, textoSucesso, setDatabaseId }) {
+export default function Form({ campos, textoBotao, idiomaSelecionado, categoria, textoSucesso, setDatabaseId, classes }) {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     async function enviarDados(dados) {
@@ -24,6 +24,8 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
                 subColecaoNome = dados.infinitivoId.toLowerCase()
             } else if (categoria === "conjugacoes") {
                 subColecaoNome = dados.tempoVerbal.toLowerCase()
+            } else if (categoria === "pronomes") {
+                subColecaoNome = dados.pronome.toLowerCase()
             }
 
             id = await inserirItem(dados, idiomaSelecionado, categoria, subColecaoNome)
@@ -76,7 +78,7 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
                 <div>{textoSucesso}</div>
             </Modal>
 
-            <form onSubmit={handleSubmit(enviarDados)}>
+            <form onSubmit={handleSubmit(enviarDados)} className={`${classes ? classes : ""}`}>
                 {
                     campos.map((campo, index) => {
                         const { name, type, maxLength, required, label, options, noLabel } = campo
@@ -101,7 +103,7 @@ export default function Form({ campos, textoBotao, idiomaSelecionado, categoria,
                             )
                         } else if (noLabel) {
                             return (
-                                <div key={index} className="form-group flex">
+                                <div key={index} className={`form-group ${categoria === "conjugacoes" && "flex"}`}>
                                     <input placeholder={label} className={`${required && 'required'}`} type={type} {...register(name, { required: required, maxLength: maxLength })} />
                                 </div>
                             )
