@@ -5,7 +5,7 @@ import Form from "../components/Form";
 import ListaIdiomas from "../components/listas/ListaIdiomas";
 import Card from "../components/Card";
 import { listarIdiomas } from "../infra/basededados";
-import logo from '../assets/idiomas.svg'
+import logo from '../assets/idiomas_inverso.svg'
 
 export default function Home() {
     const { getCollapseProps, getToggleProps } = useCollapse()
@@ -44,25 +44,6 @@ export default function Home() {
                     />
                 </Card>
                 <ListaIdiomas conteudo={idiomas} />
-                <Card idioma={false}>
-                    <NovoConteudo label="Idioma" margin="auto">
-                        <Form
-                            setDatabaseId={setIdiomaId}
-                            categoria={categoria}
-                            campos={[
-                                {
-                                    name: "idioma",
-                                    type: "text",
-                                    maxLength: 20,
-                                    required: true
-                                }
-                            ]}
-                            textoBotao="Adicionar"
-                            textoSucesso="Idioma adicionado com sucesso!"
-                        />
-                    </NovoConteudo>
-                </Card>
-
             </div>
         </div>
 

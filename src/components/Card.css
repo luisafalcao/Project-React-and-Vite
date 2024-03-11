@@ -28,7 +28,8 @@
 
 .card-botao:hover {
   border-color: transparent;
-  background-color: var(--text-color);
+  background-color: var(--accent-color);
+  color: var(--background-color);
 
   transition: all 0.5s ease-in-out;
 }
